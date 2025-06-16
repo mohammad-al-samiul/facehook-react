@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
 import { Field } from "../common/Field";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -11,6 +12,7 @@ export const LoginForm = () => {
 
   const submitForm = (formData) => {
     console.log(formData);
+    navigate("/");
   };
   return (
     <div className="card">

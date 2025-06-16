@@ -1,3 +1,10 @@
+import { Navbar } from "../components/common/Navbar";
+
 export const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <div>
+      <Navbar />
+      <p> HomePage</p>
+    </div>
+  );
 };
