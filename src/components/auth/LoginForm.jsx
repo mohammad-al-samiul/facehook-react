@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { Field } from "../common/Field";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-
+import axios from "axios";
 export const LoginForm = () => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
@@ -10,13 +10,39 @@ export const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+    setError,
+  } = useForm({
+    defaultValues: {
+      email: "saadh392@mail.com",
+      password: "bestPassw0rd",
+    },
+  });
 
-  const submitForm = (formData) => {
-    const user = { ...formData };
-    setAuth({ user });
-    navigate("/");
+  const submitForm = async (formData) => {
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_SERVER_BASE_URL}/auth/login`,
+        formData
+      );
+
+      if (res.status === 200) {
+        const { token, user } = res.data;
+        if (token) {
+          const authToken = token.token;
+          const refreshToken = token.refreshToken;
+          setAuth({ user, authToken, refreshToken });
+          navigate("/");
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      setError("root.random", {
+        type: "random",
+        message: `User with email ${formData.email} is not found!`,
+      });
+    }
   };
+
   return (
     <div className="card">
       <form
