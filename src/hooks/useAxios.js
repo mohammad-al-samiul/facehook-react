@@ -38,6 +38,7 @@ const useAxios = () => {
               { refreshToken }
             );
             const { token } = response.data;
+            console.log(token);
 
             console.log(`New Token: ${token}`);
             setAuth({ ...auth, authToken: token });
