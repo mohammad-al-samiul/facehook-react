@@ -4,6 +4,7 @@ import { useProfile } from "../hooks/useProfile";
 import { useAuth } from "../hooks/useAuth";
 import { actions } from "../actions";
 import useAxios from "../hooks/useAxios";
+import { ProfileInfo } from "../components/profile/ProfileInfo";
 
 export const ProfilePage = () => {
   const { state, dispatch } = useProfile();
@@ -17,7 +18,7 @@ export const ProfilePage = () => {
         const res = await api.get(
           `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${auth?.user?.id}`
         );
-        console.log(res.data);
+
         if (res.status == 200) {
           dispatch({
             type: actions.profile.DATA_FETCHED,
@@ -35,5 +36,10 @@ export const ProfilePage = () => {
     fetchProfile();
   }, []);
 
-  return <div>welcome to {state?.user?.firstName} </div>;
+  return (
+    <div>
+      welcome to {state?.user?.firstName}
+      <ProfileInfo />
+    </div>
+  );
 };
