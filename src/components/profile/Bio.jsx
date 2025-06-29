@@ -15,7 +15,6 @@ export const Bio = () => {
     setBio(state?.user?.bio);
   }, [state?.user?.bio]);
 
-  console.log({ bio });
   const handleBioEdit = async () => {
     dispatch({ type: actions.profile.DATA_FETCHING });
     try {
@@ -64,11 +63,21 @@ export const Bio = () => {
       <button className="flex-center h-7 w-7 rounded-full">
         {!editMode ? (
           <>
-            <img onClick={() => setEditMode(true)} src={EditIcon} alt="Edit" />
+            <img
+              onClick={() => setEditMode(true)}
+              src={EditIcon}
+              alt="Edit"
+              className="cursor-pointer "
+            />
           </>
         ) : (
           <>
-            <img onClick={handleBioEdit} src={CheckIcon} alt="Check" />
+            <img
+              onClick={handleBioEdit}
+              src={CheckIcon}
+              alt="Check"
+              className="cursor-pointer "
+            />
           </>
         )}
       </button>

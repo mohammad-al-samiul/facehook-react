@@ -74,7 +74,7 @@ export const LoginForm = () => {
         </Field>
 
         <button
-          className="auth-input bg-lwsGreen font-bold text-deepDark transition-all hover:opacity-90"
+          className="cursor-pointer auth-input bg-lwsGreen font-bold text-deepDark transition-all hover:opacity-90"
           type="submit"
         >
           Login

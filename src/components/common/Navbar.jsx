@@ -22,22 +22,22 @@ export const Navbar = () => {
         </Link>
 
         <div className="flex items-center space-x-4">
-          <Link to={"/"} href="./index.html" className="btn-primary">
+          <Link to={"/"} href="./index.html" className="btn-primary  ">
             <img src={HomeIcon} alt="Home" />
             Home
           </Link>
-          <button className="icon-btn">
+          <button className="icon-btn cursor-pointer ">
             <img src={NotificationIcon} alt="Notification" />
           </button>
           <Logout />
 
           <Link to={"/me"}>
-            <button className="flex-center !ml-8 gap-3">
+            <button className="cursor-pointer flex-center !ml-8 gap-3">
               <span className="text-lg font-medium lg:text-xl">
                 {user?.firstName}
               </span>
               <img
-                className="max-h-[32px] max-w-[32px] lg:max-h-[44px] lg:max-w-[44px]"
+                className="max-h-[32px] max-w-[32px] lg:max-h-[44px] lg:max-w-[44px] rounded-full"
                 src={`${import.meta.env.VITE_SERVER_BASE_URL}/${user?.avatar}`}
                 alt=""
               />
