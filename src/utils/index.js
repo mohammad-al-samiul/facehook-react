@@ -25,7 +25,7 @@ export const getDateDifferenceFromNow = (fromDate) => {
 
   let message = "";
 
-  if (year) message += `${year}yr `;
+  if (year) message += `${year}y `;
   if (month) message += `${month}mos `;
   if (week) message += `${week}w `;
   if (day) message += `${day}d `;
