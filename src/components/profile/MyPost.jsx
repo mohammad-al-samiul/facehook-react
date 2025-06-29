@@ -1,9 +1,14 @@
 import React from "react";
+import { useProfile } from "../../hooks/useProfile";
+import { PostList } from "../posts/PostList";
 
 export const MyPost = () => {
+  const { state } = useProfile();
+  const posts = state?.posts;
   return (
     <>
-      <article className="card mt-6 lg:mt-8">
+      <PostList posts={posts} />
+      {/* <article className="card mt-6 lg:mt-8">
         <header className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <img
@@ -253,7 +258,7 @@ export const MyPost = () => {
             </div>
           </div>
         </div>
-      </article>
+      </article> */}
     </>
   );
 };
